@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const {
   createTask,
   getTasks,
@@ -7,8 +8,9 @@ const {
   deleteTask
 } = require("../controllers/taskControllers");
 const validateTask = require("../middlewares/validateTask");
+const authMiddleware = require("../middlewares/authMiddleware");
 
-const router = express.Router();
+router.use(authMiddleware);
 
 router
   .route("/")
