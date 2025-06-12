@@ -6,24 +6,24 @@
 ## 🧰 Technology Stack
 - **Backend:** Node.js, Express.js  
 - **Authentication:** JWT, bcrypt  
-- **Validation:** Joi or express-validator  
-- **Database:** Any (MongoDB, PostgreSQL, MySQL, SQLite, etc.) – student’s choice  
+- **Validation:** Joi 
+- **Database:** MongoDB
 - **Documentation:** Swagger  
-- **Deployment:** Render or similar  
+- **Deployment:** Render 
 - **Testing:** Postman  
 - **Version Control:** Git + GitHub  
 
 ---
 
 ## 🎯 Project Goal
-Build a secure, production-grade **Task Manager Backend API** that supports:
+Building a secure, production-grade **Task Manager Backend API** that supports:
 - User authentication
 - Task CRUD operations
 - Input validation
 - Access control
 - Clean API documentation
 
-You’ll also deploy the backend service and showcase it through a **walkthrough video** and **LinkedIn post**.
+Deploying the backend service and showcasing it through a **walkthrough video** and **LinkedIn post**.
 
 ---
 
@@ -36,6 +36,50 @@ You’ll also deploy the backend service and showcase it through a **walkthrough
 - **Documented API** using Swagger
 - **GitHub PRs** for every milestone
 - **Walkthrough video** + LinkedIn post as final deliverable
+
+---
+
+## ⚙️ Setup Instructions
+
+### 🔧 Prerequisites
+- Node.js & npm installed
+- MongoDB Atlas or local MongoDB
+- Postman (for testing)
+- GitHub
+
+### 🔑 Environment Variables
+
+Create a `.env` file based on `.env.example`:
+
+```env
+PORT=5000
+MONGO_URI=your_mongo_connection_string
+JWT_SECRET=your_jwt_secret_key
+```
+
+### 🚀 Install & Run
+
+```bash
+npm install       # Install dependencies
+npm run dev       # Starts server with nodemon
+# or
+node server.js    # For production
+```
+
+---
+
+## 🚦 API Endpoints Overview
+
+| Method | Route            | Protected | Description                |
+|--------|------------------|-----------|----------------------------|
+| POST   | `/api/register`  | ❌        | Register a new user        |
+| POST   | `/api/login`     | ❌        | User login (returns token) |
+| GET    | `/api/tasks`     | ✅        | Get all tasks for user     |
+| POST   | `/api/tasks`     | ✅        | Create a task              |
+| PUT    | `/api/tasks/:id` | ✅        | Update a task              |
+| DELETE | `/api/tasks/:id` | ✅        | Delete a task              |
+
+> ✅ = Requires JWT token in headers
 
 ---
 
@@ -57,12 +101,12 @@ task-manager-api/
 
 ---
 
-## 📋 Key Guidelines
-- Use **JWT** for secure access.
-- Validate all user input to prevent bad data.
-- Use appropriate **status codes** and consistent **JSON responses**.
-- Document all routes using **Swagger** and test with **Postman**.
-- Ensure each **PR includes a meaningful commit message**, not just “update”.
+## 📚 API Documentation (Swagger)
+
+Access interactive docs at:  
+🔗 [`/api-docs`](https://zolvit-bootcamp-final-project.onrender.com/api-docs)
+
+Uses `swagger.json` for documentation setup.
 
 ---
 
@@ -72,5 +116,16 @@ task-manager-api/
 - **Email notifications** (via `nodemailer`)
 - **Task tagging**
 
-## ⚙️ Deployment Link
-- [Render Link](https://zolvit-bootcamp-final-project.onrender.com)
+---
+
+## 🌍 Deployment Link
+Live Backend:  
+🔗 [https://zolvit-bootcamp-final-project.onrender.com](https://zolvit-bootcamp-final-project.onrender.com)
+
+---
+
+## 🧪 Testing
+
+You can test the API using Postman by importing your routes or manually using the Swagger UI.
+
+---
