@@ -1,4 +1,5 @@
 const Task = require("../models/taskModel");
+const handleServerError = require("../utils/handleError");
 
 // Create Task
 const createTask = async (req, res) => {
@@ -8,11 +9,11 @@ const createTask = async (req, res) => {
       title,
       status,
       dueDate,
-      userRef: req.user._id, // ✅ Securely linked to token
+      userRef: req.user._id,
     });
-    res.status(201).json(task);
+    res.status(201).json({ success: true, data: task });
   } catch (err) {
-    res.status(500).json({ message: "Creating task failed", error: err.message });
+    handleServerError(res, "Creating task failed", err);
   }
 };
 
@@ -20,9 +21,9 @@ const createTask = async (req, res) => {
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ userRef: req.user._id });
-    res.status(200).json(tasks);
+    res.status(200).json({ success: true, data: tasks });
   } catch (err) {
-    res.status(500).json({ message: "Fetching tasks failed", error: err.message });
+    handleServerError(res, "Fetching tasks failed", err);
   }
 };
 
@@ -33,10 +34,11 @@ const getTaskById = async (req, res) => {
       _id: req.params.id,
       userRef: req.user._id,
     });
-    if (!task) return res.status(404).json({ message: "Task not found" });
-    res.status(200).json(task);
+    if (!task)
+      return res.status(404).json({ success: false, message: "Task not found" });
+    res.status(200).json({ success: true, data: task });
   } catch (err) {
-    res.status(500).json({ message: "Fetching task failed", error: err.message });
+    handleServerError(res, "Fetching task failed", err);
   }
 };
 
@@ -48,10 +50,11 @@ const updateTask = async (req, res) => {
       req.body,
       { new: true }
     );
-    if (!updatedTask) return res.status(404).json({ message: "Task not found" });
-    res.status(200).json(updatedTask);
+    if (!updatedTask)
+      return res.status(404).json({ success: false, message: "Task not found" });
+    res.status(200).json({ success: true, data: updatedTask });
   } catch (err) {
-    res.status(500).json({ message: "Updating task failed", error: err.message });
+    handleServerError(res, "Updating task failed", err);
   }
 };
 
@@ -62,10 +65,11 @@ const deleteTask = async (req, res) => {
       _id: req.params.id,
       userRef: req.user._id,
     });
-    if (!task) return res.status(404).json({ message: "Task not found" });
-    res.status(200).json({ message: "Task deleted successfully" });
+    if (!task)
+      return res.status(404).json({ success: false, message: "Task not found" });
+    res.status(200).json({ success: true, message: "Task deleted successfully" });
   } catch (err) {
-    res.status(500).json({ message: "Deleting task failed", error: err.message });
+    handleServerError(res, "Deleting task failed", err);
   }
 };
 
