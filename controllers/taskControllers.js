@@ -20,10 +20,16 @@ const createTask = async (req, res) => {
 // Get all tasks for logged-in user
 const getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ userRef: req.user._id });
-    res.status(200).json({ success: true, data: tasks });
+    const { status, dueDate } = req.query;
+    const filter = { userRef: req.user._id };
+
+    if (status) filter.status = status;
+    if (dueDate) filter.dueDate = dueDate;
+
+    const tasks = await Task.find(filter);
+    res.status(200).json(tasks);
   } catch (err) {
-    handleServerError(res, "Fetching tasks failed", err);
+    handleError(res, "Fetching tasks failed", err);
   }
 };
 

@@ -14,8 +14,29 @@
   "paths": {
     "/api/tasks": {
       "get": {
-        "summary": "Get all tasks",
+        "summary": "Get all tasks (with optional filtering)",
         "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter tasks by status (e.g., 'pending', 'completed')",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dueDate",
+            "in": "query",
+            "description": "Filter tasks by due date (YYYY-MM-DD)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of tasks"
