@@ -116,9 +116,12 @@ Uses `swagger.json` for documentation setup.
 
 ---
 
-## 🌍 Deployment Link
+## 🌍 Important Links
 Live Backend:  
-🔗 [https://zolvit-bootcamp-final-project.onrender.com](https://zolvit-bootcamp-final-project.onrender.com)
+🔗[https://zolvit-bootcamp-final-project.onrender.com](https://zolvit-bootcamp-final-project.onrender.com)
+
+Walkthrough Video Link:
+🔗[https://drive.google.com/file/d/19ewODXnKyvO3NXpympLyikun98N9dkon/view?usp=sharing](https://drive.google.com/file/d/19ewODXnKyvO3NXpympLyikun98N9dkon/view?usp=sharing)
 
 ---
 
