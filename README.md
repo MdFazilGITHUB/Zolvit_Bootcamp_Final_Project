@@ -112,8 +112,6 @@ Uses `swagger.json` for documentation setup.
 
 ## 💡 Optional Bonus Features
 - Task filtering by **date** or **status**
-- **Pagination** and **sorting**
-- **Email notifications** (via `nodemailer`)
 - **Task tagging**
 
 ---
