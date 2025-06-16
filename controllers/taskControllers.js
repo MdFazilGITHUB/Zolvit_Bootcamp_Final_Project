@@ -31,7 +31,7 @@ const getTasks = async (req, res) => {
       filter.dueDate = dueDate;
     }
     if (tag) {
-      filter.tags = req.query.tag;
+      filter.tags = tag;
     }
 
     const tasks = await Task.find(filter);
